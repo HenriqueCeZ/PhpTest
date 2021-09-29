@@ -9,8 +9,17 @@
 
 	try {
 		$pdo = new PDO($dsn,$dbuser,$dbpass);
-		$sql = "DELETE FROM usuarios WHERE id = '7' ";
+		$sql = "SELECT * FROM usuarios";
 		$sql = $pdo->query($sql);
+
+		if($sql->rowCount() > 0 ){
+
+			foreach ($sql->fetchAll() as $usuarios) {
+				echo("nome : ".$usuarios["nome"]." --  Email:  ".$usuarios["email"]."  --  Senha: ".$usuarios["senha"]);
+				# code...
+			}
+
+		}
 
 
 		
